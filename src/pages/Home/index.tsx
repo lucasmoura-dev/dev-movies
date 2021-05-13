@@ -28,6 +28,7 @@ import {
   ItemsLayout,
   ColumnOne,
   ColumnTwo,
+  MovieWrapper,
 } from './styles';
 
 type Movie = {
@@ -84,9 +85,9 @@ const Home: React.FC = ({navigation}) => {
 
   const renderItem = ({item}: ListRenderItemInfo<Movie>) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('MovieDetails')}>
+      <MovieWrapper onPress={() => navigation.navigate('MovieDetails')}>
         <Movie title={item.title} cover={item.cover} />
-      </TouchableOpacity>
+      </MovieWrapper>
     );
   };
 

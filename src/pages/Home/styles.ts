@@ -77,6 +77,6 @@ export const ItemsLayout = styled.View`
   flex: 1;
 `;
 
-export const ColumnOne = styled.View``;
-
-export const ColumnTwo = styled.View``;
+export const MovieWrapper = styled.TouchableOpacity`
+  margin-bottom: 20px;
+`;

@@ -3,12 +3,7 @@ import Movie from '@components/Movie';
 import React from 'react';
 import {ScrollView} from 'react-native-gesture-handler';
 
-import {
-  Container,
-  MovieDescription,
-  MovieDescriptionContent,
-  ReadMore,
-} from './styles';
+import {Container, MovieDescription, MovieDescriptionContent} from './styles';
 
 const MovieDetails: React.FC = () => {
   const movie = {

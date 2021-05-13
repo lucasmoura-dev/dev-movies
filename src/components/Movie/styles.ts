@@ -8,43 +8,27 @@ type ContainerProps = {
 };
 
 export const Container = styled.View<ContainerProps>`
-  /* height: ${p => (p.coverHeight ? `${p.coverHeight}px` : '220px')}; */
   width: ${p => (p.coverWidth ? `${p.coverWidth}px` : '150px')};
   border-radius: 10px;
-  /* margin: 0 0 50px; */
-  /* background: ${colors.mediumGrey}; */
-`;
-
-export const Cover = styled.Image`
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-`;
-
-export const Image = styled.Image`
-  width: 100%;
-  height: 100%;
 `;
 
 export const Content = styled.View`
-  padding-top: 10px;
+  padding-top: 8px;
   flex-direction: column;
   align-items: center;
-  /* height: 60px; */
-  /* background: pink; */
 `;
 
 export const Title = styled.Text`
   font-size: 16px;
   color: ${colors.white};
   font-family: 'Roboto-Regular';
+  margin-bottom: 8px;
 `;
 
 export const MovieInfos = styled.View`
   flex-direction: row;
   justify-content: space-between;
-  margin: 8px 0;
+  margin: 0 0 8px;
 `;
 
 export const Year = styled.Text`
@@ -68,7 +52,6 @@ export const Duration = styled.Text`
 `;
 
 export const Stars = styled.View`
-  margin-top: 0px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
