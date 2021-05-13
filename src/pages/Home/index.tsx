@@ -6,7 +6,11 @@ import avatarImage from '@assets/avatar-example.jpg';
 
 import Movie from '@components/Movie';
 
-import {FlatList, ScrollView} from 'react-native-gesture-handler';
+import {
+  FlatList,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native-gesture-handler';
 import {ListRenderItemInfo, View} from 'react-native';
 
 import {
@@ -32,7 +36,7 @@ type Movie = {
   cover: string;
 };
 
-const Home: React.FC = () => {
+const Home: React.FC = ({navigation}) => {
   const [movies, setMovies] = useState<Movie[]>([
     {
       id: 6,
@@ -79,7 +83,11 @@ const Home: React.FC = () => {
   ]);
 
   const renderItem = ({item}: ListRenderItemInfo<Movie>) => {
-    return <Movie title={item.title} cover={item.cover} />;
+    return (
+      <TouchableOpacity onPress={() => navigation.navigate('MovieDetails')}>
+        <Movie title={item.title} cover={item.cover} />
+      </TouchableOpacity>
+    );
   };
 
   return (

@@ -1,7 +1,7 @@
 const colors = {
   background: '#101012',
-  purple: '#6764FF',
-  yellow: '#FBC63C',
+  purple: '#6864ff',
+  yellow: '#fbc63d',
   white: '#FFFFFF',
   input: '#19191B',
   placeholder: '#343537',
