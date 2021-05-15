@@ -1,9 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {Button, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-
 import HeaderRight, {HeaderLeft} from '@components/NavigationHeader';
 
 import colors from '../styles/colors';

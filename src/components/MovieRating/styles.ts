@@ -1,3 +1,4 @@
+import colors from '@styles/colors';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -14,14 +15,14 @@ export const RatingValues = styled.View`
 `;
 
 export const ImdbRating = styled.Text`
-  color: #ffcc46;
+  color: ${colors.yellow};
   font-size: 18px;
   font-family: 'Roboto-Medium';
 `;
 
 export const MaxRating = styled.Text`
   margin-left: 2px;
-  color: #444448;
+  color: ${colors.darkGrey};
   font-size: 16px;
   font-family: 'Roboto-Regular';
 `;

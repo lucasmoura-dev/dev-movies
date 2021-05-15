@@ -9,7 +9,7 @@ const INITIAL_STATE: MoviesListState = {
 
 const moviesList: Reducer<MoviesListState> = (
   state = INITIAL_STATE,
-  action: any,
+  action,
 ) => {
   switch (action.type) {
     case ActionTypes.fetchMoviesPending: {
@@ -17,7 +17,6 @@ const moviesList: Reducer<MoviesListState> = (
         ...state,
         status: 'pending',
       };
-      break;
     }
     case ActionTypes.fetchMoviesFulfilled: {
       const {data} = action.payload;

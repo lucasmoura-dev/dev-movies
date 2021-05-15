@@ -44,22 +44,16 @@ export const MovieInfos = styled.View`
 `;
 
 export const Year = styled.Text`
-  color: #bec1d0;
+  color: ${colors.lightGrey};
   font-size: 16px;
   margin-right: 10px;
   font-family: 'Roboto-Medium';
 `;
 
 export const Genres = styled.Text`
-  color: #7f8287;
+  color: ${colors.mediumGrey};
   font-size: 16px;
   margin-right: 10px;
-  font-family: 'Roboto-Regular';
-`;
-
-export const Duration = styled.Text`
-  color: #7f8287;
-  font-size: 16px;
   font-family: 'Roboto-Regular';
 `;
 
@@ -76,14 +70,14 @@ export const RatingValues = styled.View`
 `;
 
 export const MovieRating = styled.Text`
-  color: #ffcc46;
+  color: ${colors.yellow};
   font-size: 18px;
   font-family: 'Roboto-Medium';
 `;
 
 export const MaxRating = styled.Text`
   margin-left: 2px;
-  color: #444448;
+  color: ${colors.darkGrey};
   font-size: 16px;
   font-family: 'Roboto-Regular';
 `;

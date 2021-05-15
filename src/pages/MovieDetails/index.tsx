@@ -5,6 +5,7 @@ import {apiTmdb} from '@services/api';
 import {getPosterImageUri} from '@services/imageApi';
 import {capitalizeWord} from '@services/utils';
 import React, {useEffect, useState} from 'react';
+import {MovieDetailsScreenProps} from 'routes/types';
 
 import {
   Container,
@@ -17,12 +18,12 @@ import {
   Year,
 } from './styles';
 
-const MovieDetails: React.FC = ({route}) => {
+const MovieDetails: React.FC<MovieDetailsScreenProps> = ({route}) => {
   const {movie} = route.params;
 
   const MAX_GENRES = 2;
-  const [moviePoster, setMoviePoster] = useState();
-  const [movieGenres, setMovieGenres] = useState('');
+  const [moviePoster, setMoviePoster] = useState<string>();
+  const [movieGenres, setMovieGenres] = useState<string>('');
 
   const getMoviePoster = async () => {
     const {data} = await apiTmdb.get(`movie/${movie.idImdb}`);

@@ -14,21 +14,12 @@ type MoviesListProps = {
 };
 
 const MoviesList: React.FC<MoviesListProps> = ({moviesList}) => {
-  console.log('filmes', moviesList);
   const navigation = useNavigation();
 
   const renderItem = ({item: movie}: ListRenderItemInfo<IMovie>) => {
     return (
       <MovieWrapper
         onPress={() => navigation.navigate('MovieDetails', {movie})}>
-        {/* <Movie
-          idImdb={movie.idImdb}
-          title={movie.title}
-          overview={movie.overview}
-          year={movie.year}
-          rating={movie.rating}
-          genres={movie.genres}
-        /> */}
         <MovieMiniature
           idImdb={movie.idImdb}
           title={movie.title}
