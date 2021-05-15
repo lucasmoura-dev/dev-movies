@@ -1,38 +1,37 @@
-import Button from '@components/Button';
+import React, {useEffect, useState} from 'react';
+
+import StarRating from 'react-native-star-rating';
+
 import MovieCover from '@components/MovieCover';
+
+import {TextStyle} from 'react-native';
 import MovieRating from '@components/MovieRating';
+import {IMovie} from 'store/modules/movies/types';
 import {apiTmdb} from '@services/api';
 import {getPosterImageUri} from '@services/imageApi';
 import {capitalizeWord} from '@services/utils';
-import React, {useEffect, useState} from 'react';
+import {Container, Title, Content, MovieInfos, Genres, Year} from './styles';
 
-import {
-  Container,
-  Genres,
-  MovieContent,
-  MovieDescription,
-  MovieDescriptionContent,
-  MovieInfos,
-  Title,
-  Year,
-} from './styles';
-
-const MovieDetails: React.FC = ({route}) => {
-  const {movie} = route.params;
-
+export const Movie: React.FC<IMovie> = ({
+  idImdb,
+  title,
+  year,
+  rating,
+  genres: genresArray,
+}) => {
   const MAX_GENRES = 2;
   const [moviePoster, setMoviePoster] = useState();
   const [movieGenres, setMovieGenres] = useState('');
 
   const getMoviePoster = async () => {
-    const {data} = await apiTmdb.get(`movie/${movie.idImdb}`);
+    const {data} = await apiTmdb.get(`movie/${idImdb}`);
     const {poster_path: posterPath} = data;
     const posterFullUri = getPosterImageUri(posterPath);
     setMoviePoster(posterFullUri);
   };
 
   const getGenres = () => {
-    let firstsGenres = movie.genres.filter((item, index) => index < MAX_GENRES);
+    let firstsGenres = genresArray.filter((item, index) => index < MAX_GENRES);
     firstsGenres = firstsGenres.map(genre => {
       return capitalizeWord(genre);
     });
@@ -40,7 +39,7 @@ const MovieDetails: React.FC = ({route}) => {
   };
 
   useEffect(() => {
-    if (movie.idImdb) {
+    if (idImdb) {
       getMoviePoster();
     }
     getGenres();
@@ -49,23 +48,16 @@ const MovieDetails: React.FC = ({route}) => {
   return (
     <Container>
       <MovieCover source={{uri: moviePoster}} width={200} height={260} />
-      <MovieContent>
-        <Title numberOfLines={2}>{movie.title}</Title>
+      <Content>
+        <Title numberOfLines={2}>{title}</Title>
         <MovieInfos>
-          <Year>{movie.year}</Year>
+          <Year>{year}</Year>
           <Genres>{movieGenres}</Genres>
         </MovieInfos>
-      </MovieContent>
-      <MovieRating rating={movie.rating} showValues />
-      <MovieDescriptionContent
-        contentContainerStyle={{paddingBottom: 10}}
-        showsVerticalScrollIndicator={false}>
-        <MovieDescription>{movie.overview}</MovieDescription>
-      </MovieDescriptionContent>
-
-      <Button>Saiba mais</Button>
+      </Content>
+      <MovieRating rating={rating} showValues />
     </Container>
   );
 };
 
-export default MovieDetails;
+export default Movie;

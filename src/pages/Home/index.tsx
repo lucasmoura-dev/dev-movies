@@ -1,33 +1,31 @@
-import React, {useState} from 'react';
-import Icon from 'react-native-vector-icons/Feather';
+import React, {useEffect, useState} from 'react';
 import Input from '@components/Input';
 
 import avatarImage from '@assets/avatar-example.jpg';
 
 import Movie from '@components/Movie';
 
-import {
-  FlatList,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native-gesture-handler';
-import {ListRenderItemInfo, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 
+import MoviesList from '@components/MoviesList';
+import {
+  IMovie,
+  IMoviesState,
+  TrendingListState,
+} from 'store/modules/movies/types';
+import {fetchMovieDetail} from 'store/modules/MovieDetails/action';
+import {fetchMoviesList} from 'store/modules/movies/action';
+import {apiTrakt} from '@services/api';
 import {
   Avatar,
   Container,
-  FiltersButton,
   Header,
   HelloMessage,
   Movies,
   SearchBar,
   SearchDescription,
   SearchFields,
-  SearchInput,
   SearchTitle,
-  ItemsLayout,
-  ColumnOne,
-  ColumnTwo,
   MovieWrapper,
 } from './styles';
 
@@ -38,58 +36,16 @@ type Movie = {
 };
 
 const Home: React.FC = ({navigation}) => {
-  const [movies, setMovies] = useState<Movie[]>([
-    {
-      id: 6,
-      title: 'Mulher-Maravilha 1984',
-      cover:
-        'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qDA95ebiy3W3m8hTRB3xZNZVVBM.jpg',
-    },
-    {
-      id: 3,
-      title: 'Coringa',
-      cover:
-        'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xLxgVxFWvb9hhUyCDDXxRPPnFck.jpg',
-    },
-    {
-      id: 3,
-      title: 'Deadpool 2',
-      cover:
-        'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/3QYjjpcVLDEcbTkM1lFsllcU3La.jpg',
-    },
-    {
-      id: 1,
-      title: 'Liga da Justiça',
-      cover:
-        'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ArWn6gCi61b3b3hclD2L0LOk66k.jpg',
-    },
-    {
-      id: 2,
-      title: 'Vingadores: Ultimato',
-      cover:
-        'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg',
-    },
-    {
-      id: 4,
-      title: 'Batman: O Cavaleiro das Trevas Ressurge',
-      cover:
-        'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/zRwO5BPPgkTNo1PoomZPE7wkKvQ.jpg',
-    },
-    {
-      id: 5,
-      title: 'O Rei Leão',
-      cover:
-        'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wrHr8eEJYDAA7WYybyH162s4oZ4.jpg',
-    },
-  ]);
+  const dispatch = useDispatch();
 
-  const renderItem = ({item}: ListRenderItemInfo<Movie>) => {
-    return (
-      <MovieWrapper onPress={() => navigation.navigate('MovieDetails')}>
-        <Movie title={item.title} cover={item.cover} />
-      </MovieWrapper>
-    );
-  };
+  // const [moviesList, setMoviesList] = useState([]);
+  const moviesList = useSelector<TrendingListState, number[]>(state => {
+    return state.moviesList.movies;
+  });
+
+  useEffect(async () => {
+    dispatch(fetchMoviesList(''));
+  }, []);
 
   return (
     <Container>
@@ -104,18 +60,7 @@ const Home: React.FC = ({navigation}) => {
           <Input name="keyword" icon="search" placeholder="Buscar..." />
         </SearchFields>
       </SearchBar>
-      <Movies>
-        <FlatList
-          renderItem={renderItem}
-          data={movies}
-          numColumns={2}
-          horizontal={false}
-          showsVerticalScrollIndicator={false}
-          columnWrapperStyle={{
-            justifyContent: 'space-between',
-          }}
-        />
-      </Movies>
+      <MoviesList moviesList={moviesList} />
     </Container>
   );
 };

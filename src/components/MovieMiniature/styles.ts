@@ -2,14 +2,14 @@ import styled from 'styled-components/native';
 
 import colors from '@styles/colors';
 
-type ContainerProps = {
-  coverWidth?: number;
-  coverHeight?: number;
-};
-
-export const Container = styled.View<ContainerProps>`
-  width: ${p => (p.coverWidth ? `${p.coverWidth}px` : '150px')};
+export const Container = styled.View`
+  width: 150px;
   border-radius: 10px;
+  align-items: center;
+`;
+
+export const CoverWrapper = styled.View`
+  width: 150px;
 `;
 
 export const Content = styled.View`
@@ -23,32 +23,7 @@ export const Title = styled.Text`
   color: ${colors.white};
   font-family: 'Roboto-Regular';
   margin-bottom: 8px;
-`;
-
-export const MovieInfos = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0 0 8px;
-`;
-
-export const Year = styled.Text`
-  color: #bec1d0;
-  font-size: 16px;
-  margin-right: 10px;
-  font-family: 'Roboto-Medium';
-`;
-
-export const Categories = styled.Text`
-  color: #7f8287;
-  font-size: 16px;
-  margin-right: 10px;
-  font-family: 'Roboto-Regular';
-`;
-
-export const Duration = styled.Text`
-  color: #7f8287;
-  font-size: 16px;
-  font-family: 'Roboto-Regular';
+  text-align: center;
 `;
 
 export const Stars = styled.View`
