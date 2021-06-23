@@ -1,4 +1,5 @@
 import {Reducer} from 'redux';
+import {getPosterImageUri} from '@services/imageApi';
 import {ActionTypes, MoviesListState} from './types';
 
 const INITIAL_STATE: MoviesListState = {
@@ -19,9 +20,11 @@ const moviesList: Reducer<MoviesListState> = (
       };
     }
     case ActionTypes.fetchMoviesFulfilled: {
-      const {data} = action.payload;
+      // const {data} = action.payload;
+      const data = action.payload;
 
-      const movies = data.map(({movie}) => {
+      const movies = data.map(movie => {
+        const poster = getPosterImageUri(movie.posterPath);
         return {
           title: movie.title,
           idImdb: movie.ids.imdb,
@@ -29,6 +32,7 @@ const moviesList: Reducer<MoviesListState> = (
           overview: movie.overview,
           rating: movie.rating,
           genres: movie.genres,
+          poster,
         };
       });
 

@@ -1,10 +1,7 @@
-import Movie from '@components/Movie';
 import MovieMiniature from '@components/MovieMiniature';
 import {useNavigation} from '@react-navigation/native';
-import React, {useCallback, useEffect} from 'react';
-import {FlatList, ListRenderItemInfo, Text} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchMovieDetail} from 'store/modules/MovieDetails/action';
+import React from 'react';
+import {FlatList, ListRenderItemInfo} from 'react-native';
 import {IMovie} from 'store/modules/movies/types';
 
 import {Container, MovieWrapper} from './styles';
@@ -21,7 +18,7 @@ const MoviesList: React.FC<MoviesListProps> = ({moviesList}) => {
       <MovieWrapper
         onPress={() => navigation.navigate('MovieDetails', {movie})}>
         <MovieMiniature
-          idImdb={movie.idImdb}
+          poster={movie.poster}
           title={movie.title}
           rating={movie.rating}
         />

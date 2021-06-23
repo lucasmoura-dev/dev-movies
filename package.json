@@ -16,6 +16,7 @@
     "@react-navigation/stack": "^5.14.5",
     "@types/react-native-star-rating": "^1.1.1",
     "@types/react-redux": "^7.1.16",
+    "@types/redux-mock-store": "^1.0.2",
     "@types/testing-library__jest-dom": "^5.9.5",
     "axios": "^0.21.1",
     "react": "17.0.1",
@@ -28,6 +29,7 @@
     "react-native-vector-icons": "^8.1.0",
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
+    "redux-mock-store": "^1.5.4",
     "redux-promise-middleware": "^6.1.2",
     "styled-components": "^5.3.0"
   },
@@ -67,9 +69,17 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
     "setupFiles": [
-      "./node_modules/react-native-gesture-handler/jestSetup.js"
+      "./node_modules/react-native-gesture-handler/jestSetup.js",
+      "./src/setupTests.ts"
+    ],
+    "collectCoverageFrom": [
+      "src/pages/**/*.tsx",
+      "src/components/**/*.tsx",
+      "src/hooks/**/*.tsx"
     ],
     "moduleFileExtensions": [
       "ts",
@@ -78,6 +88,7 @@
       "jsx",
       "json",
       "node"
-    ]
+    ],
+    "transformIgnorePatterns": []
   }
 }

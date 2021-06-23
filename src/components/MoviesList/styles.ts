@@ -4,7 +4,7 @@ export const Container = styled.View`
   margin-top: 32px;
   flex-direction: column;
   width: 100%;
-  height: 340px;
+  height: 415px;
 `;
 
 export const ItemsLayout = styled.View`

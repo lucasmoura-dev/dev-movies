@@ -12,6 +12,7 @@ export type IMovie = {
   overview: string;
   rating: number;
   genres: string[];
+  poster: string;
 };
 
 export type IMoviesListState = {
