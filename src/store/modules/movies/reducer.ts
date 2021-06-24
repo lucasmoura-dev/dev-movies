@@ -22,8 +22,6 @@ const moviesList: Reducer<IMoviesListState> = (
     case ActionTypes.fetchMoviesFulfilled: {
       const {movies, pagesCount, currentPage} = action.payload;
 
-      console.log('Fullfilled state e action', state, action);
-
       const parsedMovies = movies.map(movie => {
         const poster = getPosterImageUri(movie.posterPath);
         return {
@@ -44,7 +42,6 @@ const moviesList: Reducer<IMoviesListState> = (
       };
 
       if (currentPage > 1) {
-        console.log('append movies');
         response.data.movies = [...state.data.movies, ...parsedMovies];
       }
 

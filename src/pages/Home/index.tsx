@@ -9,13 +9,8 @@ import {
 
 import avatarImage from '@assets/avatar-example.jpg';
 
-import {useDispatch, useSelector} from 'react-redux';
-
 import MoviesList from '@components/MoviesList';
-import {IMovie} from 'store/modules/movies/types';
-import {fetchMoviesListAction} from 'store/modules/movies/action';
 import colors from '@styles/colors';
-import {IState} from 'store';
 import {
   Avatar,
   Container,
@@ -28,56 +23,16 @@ import {
 } from './styles';
 import {useMovies} from '../../hooks/movies';
 
-type Movie = {
-  id: number;
-  title: string;
-  cover: string;
-};
-
 const Home: React.FC = () => {
   const [movieQuery, setMovieQuery] = useState('');
-  const [moviesList, fetchMovies] = useMovies();
-
-  useEffect(() => {
-    console.log(moviesList);
-    fetchMovies('');
-  }, []);
+  const [, fetchMovies] = useMovies();
 
   const fetchNextMovies = () => {
     fetchMovies(movieQuery);
   };
 
-  /* const [maxPage, setMaxPage] = useState(60);
-  const dispatch = useDispatch();
-  const moviesList = useSelector<any, IMoviesList>(state => {
-    return state.moviesList.data.movies;
-  });
-
-  const fetchMovies = (query: string, page = 1): void => {
-    if (moviesList.pagesCount && moviesList.pagesCount >= 60) {
-      return;
-    }
-
-    dispatch(fetchMoviesListAction(query, page));
-  };
-
-  useEffect(() => {
-    fetchMovies('');
-  }, []); */
-
-  /* const dispatch = useDispatch();
-
-  const moviesList = useSelector<IState, IMovie[]>(state => {
-    return state.moviesList.data.movies;
-  });
-
-  useEffect(() => {
-    dispatch(fetchMoviesListAction(movieQuery));
-  }, []); */
-
   const onSearchMovie = () => {
-    // dispatch(fetchMoviesListAction(movieQuery));
-    fetchMovies(movieQuery, 1);
+    fetchMovies(movieQuery, true);
   };
 
   const onChangeSearchInput = (

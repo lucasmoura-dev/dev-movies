@@ -11,7 +11,7 @@ type MoviesListProps = {
   fetchNextMovies: () => void;
 };
 
-const MoviesList: React.FC = ({fetchNextMovies}) => {
+const MoviesList: React.FC<MoviesListProps> = ({fetchNextMovies}) => {
   const navigation = useNavigation();
   const moviesList = useSelector<any, IMoviesList>(state => {
     return state.moviesList.data;
