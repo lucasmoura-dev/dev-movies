@@ -1,12 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Input from '@components/Input';
 
-import {
-  NativeSyntheticEvent,
-  Text,
-  TextInputChangeEventData,
-  Keyboard,
-} from 'react-native';
+import {Keyboard} from 'react-native';
 
 import avatarImage from '@assets/avatar-example.jpg';
 

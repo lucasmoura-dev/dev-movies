@@ -31,7 +31,7 @@ const MovieRating: React.FC<MovieRatingProps> = ({
       />
       {showValues && (
         <RatingValues>
-          <ImdbRating>{rating.toFixed(1)}</ImdbRating>
+          <ImdbRating testID="ratingValue">{rating.toFixed(1)}</ImdbRating>
           <MaxRating>/10</MaxRating>
         </RatingValues>
       )}

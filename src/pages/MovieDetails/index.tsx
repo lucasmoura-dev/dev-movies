@@ -41,7 +41,7 @@ const MovieDetails: React.FC<MovieDetailsScreenProps> = ({route}) => {
         <Title numberOfLines={2}>{movie.title}</Title>
         <MovieInfos>
           <Year>{movie.year}</Year>
-          <Genres>{movieGenres}</Genres>
+          <Genres testID="movieGenres">{movieGenres}</Genres>
         </MovieInfos>
       </MovieContent>
       <MovieRating rating={movie.rating} showValues />

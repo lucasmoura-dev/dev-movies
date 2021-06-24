@@ -6,7 +6,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --watchAll --detectOpenHandles",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
@@ -70,11 +70,13 @@
   "jest": {
     "preset": "react-native",
     "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect",
       "@testing-library/jest-native/extend-expect"
     ],
     "setupFiles": [
       "./node_modules/react-native-gesture-handler/jestSetup.js",
-      "./src/setupTests.ts"
+      "./src/setupTests.ts",
+      "./jest/setup.js"
     ],
     "collectCoverageFrom": [
       "src/pages/**/*.tsx",

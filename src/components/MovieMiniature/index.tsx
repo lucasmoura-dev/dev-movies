@@ -16,7 +16,7 @@ const MovieMiniature: React.FC<MovieMiniatureProps> = ({
   rating,
 }) => {
   return (
-    <Container>
+    <Container testID="movieMiniature">
       <MovieCover source={{uri: poster}} width={150} height={220} />
       <Content>
         <Title numberOfLines={1}>{title}</Title>

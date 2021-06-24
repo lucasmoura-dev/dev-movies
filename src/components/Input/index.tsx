@@ -30,6 +30,7 @@ const Input: React.FC<InputProps> = ({value, onClear, onSubmit, ...rest}) => {
         placeholder="Buscar..."
         returnKeyType="search"
         selectionColor={colors.purple}
+        testID="input"
         {...rest}
       />
 
@@ -39,6 +40,7 @@ const Input: React.FC<InputProps> = ({value, onClear, onSubmit, ...rest}) => {
           size={26}
           color="#666360"
           onPress={handleClearButton}
+          testID="clearButton"
         />
       )}
     </Container>

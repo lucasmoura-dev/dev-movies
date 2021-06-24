@@ -22,7 +22,8 @@ const MoviesList: React.FC<MoviesListProps> = ({fetchNextMovies}) => {
     ({item: movie}: ListRenderItemInfo<IMovie>) => {
       return (
         <MovieWrapper
-          onPress={() => navigation.navigate('MovieDetails', {movie})}>
+          onPress={() => navigation.navigate('MovieDetails', {movie})}
+          testID="movieMiniatureWrapper">
           <MovieMiniature
             poster={movie.poster}
             title={movie.title}
@@ -48,6 +49,7 @@ const MoviesList: React.FC<MoviesListProps> = ({fetchNextMovies}) => {
         columnWrapperStyle={{
           justifyContent: 'space-between',
         }}
+        testID="movies-flatlist"
       />
     </Container>
   );
