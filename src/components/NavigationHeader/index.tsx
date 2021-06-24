@@ -23,18 +23,14 @@ export const HeaderLeft: React.FC = () => {
 };
 
 const HeaderRight: React.FC = () => {
+  const shareHandle = () => {};
+
+  const favoriteHandle = () => {};
+
   return (
     <HeaderRightContainer>
-      <ShareIcon
-        name="share-variant"
-        size={24}
-        onPress={() => console.log('1')}
-      />
-      <BookmarkIcon
-        name="bookmark"
-        size={24}
-        onPress={() => console.log('2')}
-      />
+      <ShareIcon name="share-variant" size={24} onPress={shareHandle} />
+      <BookmarkIcon name="bookmark" size={24} onPress={favoriteHandle} />
     </HeaderRightContainer>
   );
 };
