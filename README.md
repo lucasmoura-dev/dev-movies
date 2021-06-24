@@ -57,6 +57,14 @@ To run this app you need to satisfy these requirements below:
 If you need help to prepare your development environment I recommend this complete [guide](https://react-native.rocketseat.dev/) created by RocketSeat.
     
 ### Changing the API Key
+This application uses the TraktTV and TMDB API Keys, it is mandatory that you enter the keys to be able to run this app.Follow the instructions below to set the keys:
+
+1. Duplicate the file `.env.example` and rename the copy to `.env`
+2. Open the new file `.env`
+3. Replace `<your-trakt-api-key>` for your TraktTV API Key (create [here](https://trakt.docs.apiary.io/#introduction/create-an-app));
+4. Replace `<your-tmdb-api-key>` for your TMDB API KEY (create [here](https://www.themoviedb.org/documentation/api));
+
+
 By default this app contains a limited API Key from TrakTv and TMDB that has a request limit, if you want to change it you can modify the configuration file on these sites:
 - [TraktTV API](https://trakt.docs.apiary.io/#introduction/create-an-app);
 - [TMDB](https://developers.themoviedb.org/);
