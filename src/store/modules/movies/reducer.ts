@@ -1,14 +1,14 @@
 import {Reducer} from 'redux';
 import {getPosterImageUri} from '@services/imageApi';
-import {ActionTypes, MoviesListState} from './types';
+import {ActionTypes, IMoviesListState} from './types';
 
-const INITIAL_STATE: MoviesListState = {
-  movies: [],
+const INITIAL_STATE: IMoviesListState = {
+  data: {currentPage: 1, pagesCount: 1, movies: []},
   status: '',
   errorMessage: '',
 };
 
-const moviesList: Reducer<MoviesListState> = (
+const moviesList: Reducer<IMoviesListState> = (
   state = INITIAL_STATE,
   action,
 ) => {
@@ -20,10 +20,11 @@ const moviesList: Reducer<MoviesListState> = (
       };
     }
     case ActionTypes.fetchMoviesFulfilled: {
-      // const {data} = action.payload;
-      const data = action.payload;
+      const {movies, pagesCount, currentPage} = action.payload;
 
-      const movies = data.map(movie => {
+      console.log('Fullfilled state e action', state, action);
+
+      const parsedMovies = movies.map(movie => {
         const poster = getPosterImageUri(movie.posterPath);
         return {
           title: movie.title,
@@ -39,8 +40,14 @@ const moviesList: Reducer<MoviesListState> = (
       const response = {
         ...state,
         status: 'ok',
-        movies,
+        data: {pagesCount, movies: parsedMovies},
       };
+
+      if (currentPage > 1) {
+        console.log('append movies');
+        response.data.movies = [...state.data.movies, ...parsedMovies];
+      }
+
       return response;
     }
     case ActionTypes.fetchMoviesRejected: {

@@ -15,8 +15,14 @@ export type IMovie = {
   poster: string;
 };
 
-export type IMoviesListState = {
+export type IMoviesList = {
+  currentPage: number;
+  pagesCount: number;
   movies: IMovie[];
+};
+
+export type IMoviesListState = {
+  data: IMoviesList;
   status: string;
   errorMessage: string;
 };

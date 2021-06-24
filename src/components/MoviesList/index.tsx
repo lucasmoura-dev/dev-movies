@@ -2,16 +2,20 @@ import MovieMiniature from '@components/MovieMiniature';
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {FlatList, ListRenderItemInfo} from 'react-native';
-import {IMovie} from 'store/modules/movies/types';
+import {useSelector} from 'react-redux';
+import {IMovie, IMoviesList} from 'store/modules/movies/types';
 
 import {Container, MovieWrapper} from './styles';
 
 type MoviesListProps = {
-  moviesList: IMovie[];
+  fetchNextMovies: () => void;
 };
 
-const MoviesList: React.FC<MoviesListProps> = ({moviesList}) => {
+const MoviesList: React.FC = ({fetchNextMovies}) => {
   const navigation = useNavigation();
+  const moviesList = useSelector<any, IMoviesList>(state => {
+    return state.moviesList.data;
+  });
 
   const renderItem = ({item: movie}: ListRenderItemInfo<IMovie>) => {
     return (
@@ -30,7 +34,9 @@ const MoviesList: React.FC<MoviesListProps> = ({moviesList}) => {
     <Container>
       <FlatList
         renderItem={renderItem}
-        data={moviesList}
+        data={moviesList.movies}
+        onEndReachedThreshold={0.6}
+        onEndReached={() => fetchNextMovies()}
         numColumns={2}
         horizontal={false}
         showsVerticalScrollIndicator={false}

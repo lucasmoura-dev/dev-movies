@@ -1,20 +1,21 @@
 import {apiTmdb, apiTrakt} from '@services/api';
 import {ActionTypes} from './types';
 
-export function fetchMoviesList(query: string) {
+export function fetchMoviesListAction(query: string, page = 1) {
   return {
     type: ActionTypes.fetchMovies,
     async payload() {
-      const {data} = await apiTrakt.get('movies/trending', {
+      console.log('buscando');
+      const {headers, data} = await apiTrakt.get('movies/trending', {
         params: {
-          page: 1,
+          page,
           extended: 'full',
           query: query || '',
-          limit: 25,
+          limit: 10,
         },
       });
 
-      return Promise.all(
+      const movies = await Promise.all(
         await data.map(async ({movie}) => {
           const idImdb = movie.ids.imdb;
           const {
@@ -23,6 +24,10 @@ export function fetchMoviesList(query: string) {
           return {...movie, posterPath};
         }),
       );
+
+      const pagesCount = headers['x-pagination-page-count'];
+
+      return {currentPage: page, pagesCount, movies};
     },
   };
 }

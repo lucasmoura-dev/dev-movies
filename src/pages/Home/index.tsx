@@ -1,7 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import Input from '@components/Input';
 
-import {NativeSyntheticEvent, TextInputChangeEventData} from 'react-native';
+import {
+  NativeSyntheticEvent,
+  Text,
+  TextInputChangeEventData,
+} from 'react-native';
 
 import avatarImage from '@assets/avatar-example.jpg';
 
@@ -9,7 +13,7 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import MoviesList from '@components/MoviesList';
 import {IMovie} from 'store/modules/movies/types';
-import {fetchMoviesList} from 'store/modules/movies/action';
+import {fetchMoviesListAction} from 'store/modules/movies/action';
 import colors from '@styles/colors';
 import {IState} from 'store';
 import {
@@ -22,6 +26,7 @@ import {
   SearchFields,
   SearchTitle,
 } from './styles';
+import {useMovies} from '../../hooks/movies';
 
 type Movie = {
   id: number;
@@ -31,18 +36,48 @@ type Movie = {
 
 const Home: React.FC = () => {
   const [movieQuery, setMovieQuery] = useState('');
+  const [moviesList, fetchMovies] = useMovies();
+
+  useEffect(() => {
+    console.log(moviesList);
+    fetchMovies('');
+  }, []);
+
+  const fetchNextMovies = () => {
+    fetchMovies(movieQuery);
+  };
+
+  /* const [maxPage, setMaxPage] = useState(60);
   const dispatch = useDispatch();
+  const moviesList = useSelector<any, IMoviesList>(state => {
+    return state.moviesList.data.movies;
+  });
+
+  const fetchMovies = (query: string, page = 1): void => {
+    if (moviesList.pagesCount && moviesList.pagesCount >= 60) {
+      return;
+    }
+
+    dispatch(fetchMoviesListAction(query, page));
+  };
+
+  useEffect(() => {
+    fetchMovies('');
+  }, []); */
+
+  /* const dispatch = useDispatch();
 
   const moviesList = useSelector<IState, IMovie[]>(state => {
-    return state.moviesList.movies;
+    return state.moviesList.data.movies;
   });
 
   useEffect(() => {
-    dispatch(fetchMoviesList(movieQuery));
-  }, []);
+    dispatch(fetchMoviesListAction(movieQuery));
+  }, []); */
 
   const onSearchMovie = () => {
-    dispatch(fetchMoviesList(movieQuery));
+    // dispatch(fetchMoviesListAction(movieQuery));
+    fetchMovies(movieQuery, 1);
   };
 
   const onChangeSearchInput = (
@@ -73,7 +108,7 @@ const Home: React.FC = () => {
           />
         </SearchFields>
       </SearchBar>
-      <MoviesList moviesList={moviesList} />
+      <MoviesList fetchNextMovies={fetchNextMovies} />
     </Container>
   );
 };
