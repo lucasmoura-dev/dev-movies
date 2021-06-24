@@ -65,11 +65,9 @@ This application uses the TraktTV and TMDB API Keys, it is mandatory that you en
 4. Replace `<your-tmdb-api-key>` for your TMDB API KEY (create [here](https://www.themoviedb.org/documentation/api));
 
 
-By default this app contains a limited API Key from TrakTv and TMDB that has a request limit, if you want to change it you can modify the configuration file on these sites:
 - [TraktTV API](https://trakt.docs.apiary.io/#introduction/create-an-app);
 - [TMDB](https://developers.themoviedb.org/);
 
-![Set the API keys](documentation/SetMarvelApiKey.png)  
 
 ## How to run
 Execute this command to run this app for Android
