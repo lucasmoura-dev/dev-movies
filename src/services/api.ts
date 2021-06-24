@@ -9,8 +9,7 @@ const DEFAULT_LANGUAGE = 'pt-BR';
 export const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/original/';
 
 /**
- * API responsável por trazer a lista de filmes que estão em alta, mas ela não
- * trás detalhes dos filmes.
+ * API responsável por trazer a lista de filmes que estão em alta.
  */
 export const apiTrakt = axios.create({
   baseURL: 'https://api.trakt.tv',
@@ -20,7 +19,7 @@ export const apiTrakt = axios.create({
 });
 
 /**
- * API para buscar informações detalhadas de um filme em específico.
+ * API usada apenas para buscar as imagens dos filmes.
  */
 export const apiTmdb = axios.create({
   // https://api.themoviedb.org/3/movie/293660?api_key=f3deba27712e5a7969d5d993909a6123

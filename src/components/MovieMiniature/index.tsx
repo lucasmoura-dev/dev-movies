@@ -1,6 +1,6 @@
 import {MovieCover} from '@components/MovieCover';
 import MovieRating from '@components/MovieRating';
-import React, {useEffect, useState} from 'react';
+import React, {memo} from 'react';
 
 import {Container, Content, Title} from './styles';
 
@@ -26,4 +26,4 @@ const MovieMiniature: React.FC<MovieMiniatureProps> = ({
   );
 };
 
-export default MovieMiniature;
+export default memo(MovieMiniature);

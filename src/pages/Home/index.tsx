@@ -5,6 +5,7 @@ import {
   NativeSyntheticEvent,
   Text,
   TextInputChangeEventData,
+  Keyboard,
 } from 'react-native';
 
 import avatarImage from '@assets/avatar-example.jpg';
@@ -35,11 +36,10 @@ const Home: React.FC = () => {
     fetchMovies(movieQuery, true);
   };
 
-  const onChangeSearchInput = (
-    event: NativeSyntheticEvent<TextInputChangeEventData>,
-  ): void => {
-    const query = event.nativeEvent.text;
-    setMovieQuery(query);
+  const clearHandle = () => {
+    Keyboard.dismiss();
+    setMovieQuery('');
+    fetchMovies('', true);
   };
 
   return (
@@ -53,13 +53,10 @@ const Home: React.FC = () => {
         <SearchDescription>O seu próximo filme preferido</SearchDescription>
         <SearchFields>
           <Input
-            name="keyword"
-            icon="search"
-            placeholder="Buscar..."
-            onChange={onChangeSearchInput}
-            returnKeyType="search"
-            selectionColor={colors.purple}
-            onSubmitEditing={onSearchMovie}
+            value={movieQuery}
+            onClear={clearHandle}
+            onSubmit={onSearchMovie}
+            onChangeText={text => setMovieQuery(text)}
           />
         </SearchFields>
       </SearchBar>
