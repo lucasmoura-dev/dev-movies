@@ -1,5 +1,5 @@
 
-![DevMovies Logo](documentation/devMovies.png)
+![DevMovies Logo](documentation/logo.png)
 
     
 # DevMovies
@@ -8,7 +8,7 @@ DevMovies is an application that lists the movies that are high, suggesting seve
 
 Searching for movies           |  Choosing a movie to see more
 :-------------------------:|:-------------------------:
-![Listing movies and filter](documentation/devMovies1.gif)  |  ![Listing movies and filter](documentation/devMovies2.gif)
+![Listing movies and filter](documentation/DevMovies1.gif)  |  ![Listing movies and filter](documentation/DevMovies2.gif)
 
 
 ## Badges
