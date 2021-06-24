@@ -9,14 +9,13 @@ export function fetchMoviesListAction(query: string, page = 1): any {
   return {
     type: ActionTypes.fetchMovies,
     async payload() {
-      const {headers, data} = await apiTrakt.get('movies/trending', {
-        params: {
-          page,
-          extended: 'full',
-          query: query || '',
-          limit: 10,
-        },
-      });
+      const params = {page, extended: 'full', limit: 10};
+      if (query && query.length > 0) {
+        params.query = query;
+      }
+      const {headers, data} = await apiTrakt
+        .get('movies/trending', {params})
+        .catch(errors => console.log(errors));
 
       const movies = await Promise.all(
         await data.map(async ({movie}) => {
