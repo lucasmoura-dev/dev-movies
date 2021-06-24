@@ -3,7 +3,7 @@ import Input from '@components/Input';
 
 import {Keyboard} from 'react-native';
 
-import avatarImage from '@assets/avatar-example.jpg';
+import avatarImage from '@assets/woman.png';
 
 import MoviesList from '@components/MoviesList';
 import colors from '@styles/colors';
