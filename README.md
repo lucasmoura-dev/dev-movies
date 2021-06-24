@@ -1,20 +1,18 @@
 
 ![DevMovies Logo](documentation/logo.png)
 
-    
-# DevMovies
-
 DevMovies is an application that lists the movies that are high, suggesting several options for those who want to find a new movie. The APP makes the TRAKTTV API to identify the high movies, the TMDB API is also used to search for images.
+
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+
 
 Searching for movies           |  Choosing a movie to see more
 :-------------------------:|:-------------------------:
 ![Listing movies and filter](documentation/DevMovies1.gif)  |  ![Listing movies and filter](documentation/DevMovies2.gif)
 
 
-## Badges
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
   
 ## Features
